@@ -6,7 +6,7 @@ import pandas as pd
 # Page config
 st.set_page_config(
     page_title="Olist Delivery Predictor",
-    page_icon="📦",
+    page_icon="",
     layout="centered"
 )
 
@@ -116,15 +116,15 @@ def load_model():
 model = load_model()
 
 # Header
-st.markdown("# 📦 Olist Delivery Predictor")
+st.markdown(" Olist Delivery Predictor")
 st.markdown('<p class="subtitle">Order details daalein — delivery time pata karein</p>', unsafe_allow_html=True)
 
 if model is None:
-    st.error("⚠️ `delivery_model.pkl` file nahi mili! App folder mein rakhein.")
+    st.error(" `delivery_model.pkl` file nahi mili! App folder mein rakhein.")
     st.stop()
 
 # Form
-st.markdown('<p class="section-header">💰 Payment Details</p>', unsafe_allow_html=True)
+st.markdown('<p class="section-header"> Payment Details</p>', unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
     price = st.number_input("Price (BRL)", min_value=0.0, value=100.0, step=10.0)
@@ -133,7 +133,7 @@ with col2:
 
 payment_value = st.number_input("Total Payment Value (BRL)", min_value=0.0, value=120.0, step=10.0)
 
-st.markdown('<p class="section-header">📦 Product Dimensions</p>', unsafe_allow_html=True)
+st.markdown('<p class="section-header"> Product Dimensions</p>', unsafe_allow_html=True)
 col3, col4 = st.columns(2)
 with col3:
     weight = st.number_input("Weight (grams)", min_value=0, value=500, step=100)
@@ -142,7 +142,7 @@ with col4:
     height = st.number_input("Height (cm)", min_value=0, value=15, step=1)
     width = st.number_input("Width (cm)", min_value=0, value=10, step=1)
 
-st.markdown('<p class="section-header">📍 Customer Location</p>', unsafe_allow_html=True)
+st.markdown('<p class="section-header"> Customer Location</p>', unsafe_allow_html=True)
 state_mg = st.selectbox(
     "Customer State",
     options=["Other State", "MG (Minas Gerais)"],
@@ -173,13 +173,13 @@ if st.button("🚀 Delivery Time Predict Karein"):
 
         # Result display
         if days <= 5:
-            emoji = "⚡"
+            emoji = ""
             msg = "Express Delivery!"
         elif days <= 10:
-            emoji = "✅"
+            emoji = ""
             msg = "Standard Delivery"
         else:
-            emoji = "🕐"
+            emoji = ""
             msg = "Thodi der lagegi..."
 
         st.markdown(f"""
@@ -193,7 +193,7 @@ if st.button("🚀 Delivery Time Predict Karein"):
 
     except Exception as e:
         st.error(f"Error: {e}")
-        st.info("💡 Model ke features check karein — training wale columns match hone chahiye.")
+        st.info(" Model ke features check karein — training wale columns match hone chahiye.")
 
 # Footer
 st.markdown("<br><br>", unsafe_allow_html=True)
